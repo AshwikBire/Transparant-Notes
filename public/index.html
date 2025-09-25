@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Private notes app that automatically hides content during screen sharing" />
     <title>Private Notes - Hidden During Screen Sharing</title>
-    <meta name="description" content="Take private notes that automatically hide during screen sharing">
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
     <style>
         body {
             margin: 0;
@@ -19,7 +20,16 @@
             min-height: 100vh;
         }
         
-        /* Hide scrollbars but keep functionality */
+        /* Loading screen */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-size: 1.5em;
+        }
+        
         body::-webkit-scrollbar {
             display: none;
         }
@@ -29,9 +39,28 @@
             scrollbar-width: none;
         }
     </style>
+    
+    <!-- Redirect script for GitHub Pages -->
+    <script>
+        (function() {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect != location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
 </head>
 <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <noscript>
+        <div class="loading">
+            You need to enable JavaScript to run this app.
+        </div>
+    </noscript>
+    <div id="root">
+        <div class="loading">
+            Loading Private Notes App...
+        </div>
+    </div>
 </body>
 </html>
